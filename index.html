@@ -649,7 +649,7 @@
     Linger
   </a>
   <ul class="nav-links">
-    <li><a href="#how">How it works</a></li>
+    <li><a href="#audience">For individuals</a></li>
     <li><a href="#audience">For churches</a></li>
     <li><a href="#notify" class="btn-primary" style="padding:0.55rem 1.25rem;font-size:0.82rem;color:#fff;">Get early access</a></li>
   </ul>
@@ -659,7 +659,7 @@
 <section id="hero">
   <p class="hero-eyebrow">AI-Powered Sermon Notes</p>
   <h1 class="hero-headline">Be <em>present.</em> Keep every word.</h1>
-  <p class="hero-sub">Linger captures what the pastor says, what's on the screen, and what you're thinking — then delivers a polished set of notes after every service.</p>
+  <p class="hero-sub">Sunday morning asks a lot of you. Linger makes sure nothing gets lost in it.</p>
   <div class="hero-cta" id="notify">
     <div>
       <div class="email-form">
@@ -673,6 +673,38 @@
   <div class="hero-icon">
     <img src="./Linger-icon.png" alt="Linger app icon">
   </div>
+  <div style="position:absolute;right:5rem;top:50%;transform:translateY(calc(-50% + 115px));width:200px;text-align:center;font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:400;color:var(--ink);opacity:0.5;letter-spacing:0.02em;">Linger</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- AUDIENCE EMPATHY -->
+<section id="audience">
+
+  <div class="audience-card">
+    <p class="audience-label">For individuals</p>
+    <h3 class="audience-title">The sermon was good. You can already feel it fading.</h3>
+    <p class="audience-body">You're trying to be present — really present — but there's a lot coming at you. The pastor is moving fast. Someone's coughing. There's a slide with four scriptures on it. You had a thought that felt important and then it was gone. By Monday, what's left is a feeling, not the thing itself.</p>
+    <p class="audience-body" style="margin-top:0.75rem;">Linger runs quietly in the background while you worship. It captures the audio, the slides, and any thoughts you tap in the moment — then delivers a structured set of notes after the service. The sermon, intact. Yours to return to all week.</p>
+    <div class="audience-email-form" style="margin-top:1.25rem;">
+      <input id="individual-email" type="email" placeholder="Your email" autocomplete="email">
+      <button type="button" onclick="submitForm('individual')">Get early access</button>
+    </div>
+    <p id="individual-msg" style="font-size:0.8rem;margin-top:0.6rem;min-height:1.2em;color:var(--terra);"></p>
+  </div>
+
+  <div class="audience-card highlight">
+    <p class="audience-label">For churches &amp; organizations</p>
+    <h3 class="audience-title">Your pastor spent 20 hours on that sermon. Most of it won't survive the drive home.</h3>
+    <p class="audience-body">You've probably noticed it — people holding their phones up to photograph a slide, or furiously typing while the pastor is mid-sentence. They're trying. But the tools they're using weren't built for this. And for the rest of the congregation, the words just wash over them and disappear.</p>
+    <p class="audience-body" style="margin-top:0.75rem;">Linger gives your whole congregation a way to engage more deeply — not just during the service, but all week. Partner churches connect directly from the tech booth, so every person in the room gets clean, structured notes without lifting a finger. Better retention. Deeper engagement. And no more phones pointed at the screen.</p>
+    <div class="audience-email-form" style="margin-top:1.25rem;">
+      <input id="church-email" type="email" placeholder="Your work email" autocomplete="email">
+      <button type="button" onclick="submitForm('church')">Let's talk</button>
+    </div>
+    <p id="church-msg" style="font-size:0.8rem;margin-top:0.6rem;min-height:1.2em;color:var(--terra);"></p>
+  </div>
+
 </section>
 
 <hr class="section-divider">
@@ -700,35 +732,6 @@
       <p class="step-body">Minutes after the service ends, a structured document arrives: the sermon's main points, scripture references with full text, your personal annotations in context, and discussion questions for the week ahead.</p>
     </div>
   </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- AUDIENCE CTA -->
-<section id="audience">
-
-  <div class="audience-card">
-    <p class="audience-label">For individuals</p>
-    <h3 class="audience-title">Stop losing the sermon by Monday.</h3>
-    <p class="audience-body">Linger works quietly in the background while you listen. Tap to bookmark a moment, flag a question, or jot a thought. You'll have structured notes — scripture, main points, your own reflections — waiting when the service ends.</p>
-    <div class="audience-email-form">
-      <input id="individual-email" type="email" placeholder="Your email" autocomplete="email">
-      <button type="button" onclick="submitForm('individual')">Get early access</button>
-    </div>
-    <p id="individual-msg" style="font-size:0.8rem;margin-top:0.6rem;min-height:1.2em;color:var(--terra);"></p>
-  </div>
-
-  <div class="audience-card highlight">
-    <p class="audience-label">For churches &amp; organizations</p>
-    <h3 class="audience-title">Give your whole congregation a better experience.</h3>
-    <p class="audience-body">Partner with Linger to provide a clean audio feed directly from your tech booth. Every person in the room gets studio-quality notes. No setup required for your congregation — just show up. Pilot pricing available for early partner churches.</p>
-    <div class="audience-email-form">
-      <input id="church-email" type="email" placeholder="Your work email" autocomplete="email">
-      <button type="button" onclick="submitForm('church')">Let's talk</button>
-    </div>
-    <p id="church-msg" style="font-size:0.8rem;margin-top:0.6rem;min-height:1.2em;color:var(--terra);"></p>
-  </div>
-
 </section>
 
 <hr class="section-divider">
