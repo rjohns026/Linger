@@ -663,10 +663,10 @@
   <div class="hero-cta" id="notify">
     <div>
       <div class="email-form">
-        <input type="email" placeholder="Your email address" autocomplete="email">
-        <button type="button">Notify me</button>
+        <input id="hero-email" type="email" placeholder="Your email address" autocomplete="email">
+        <button type="button" onclick="submitForm('individual', 'hero')">Notify me</button>
       </div>
-      <p class="form-note">Linger is in development. Be the first to know when it launches.</p>
+      <p id="hero-msg" class="form-note">Linger is in development. Be the first to know when it launches.</p>
     </div>
   </div>
 
@@ -750,9 +750,11 @@
 
   const WORKER_URL = 'https://linger-contacts.robert-fdf.workers.dev/';
 
-  async function submitForm(type) {
-    const input = document.getElementById(type + '-email');
-    const msg = document.getElementById(type + '-msg');
+  async function submitForm(type, source) {
+    const inputId = source === 'hero' ? 'hero-email' : type + '-email';
+    const msgId = source === 'hero' ? 'hero-msg' : type + '-msg';
+    const input = document.getElementById(inputId);
+    const msg = document.getElementById(msgId);
     const email = input.value.trim();
 
     if (!email || !email.includes('@')) {
