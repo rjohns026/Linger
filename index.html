@@ -95,6 +95,9 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--ink); }
+  nav.scrolled .nav-logo { color: var(--ink); }
+  nav.scrolled .nav-links a { color: var(--muted); }
+  nav.scrolled .nav-links a:hover { color: var(--ink); }
 
   /* ── BUTTONS ── */
   .btn-primary {
@@ -142,7 +145,28 @@
     padding: 8rem 2.5rem 5rem;
     max-width: 1100px;
     margin: 0 auto;
-    position: relative;
+  }
+
+  .hero-lockup {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.05s forwards;
+  }
+  .hero-lockup img {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: block;
+  }
+  .hero-lockup-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.01em;
   }
 
   .hero-eyebrow {
@@ -192,35 +216,13 @@
     animation: fadeUp 0.7s 0.55s forwards;
   }
 
-  .hero-rule {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 38%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--rule) 40%, transparent);
-    display: none;
-  }
-
-  /* decorative large numeral */
-  .hero-deco {
-    position: absolute;
-    right: 3rem;
-    bottom: 4rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 18rem;
-    font-weight: 500;
-    line-height: 1;
-    color: var(--ink);
-    opacity: 0.035;
-    user-select: none;
-    pointer-events: none;
-  }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 560px) {
+    #hero { padding: 7rem 1.25rem 4rem; }
   }
 
   /* ── DIVIDER ── */
@@ -687,7 +689,11 @@
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow">AI-Powered Sermon Notes</p>
+  <div class="hero-lockup">
+    <img src="./Linger-icon.png" alt="Linger app icon">
+    <span class="hero-lockup-label">Linger — AI Sermon Notes</span>
+  </div>
+  <p class="hero-eyebrow">Coming soon</p>
   <h1 class="hero-headline">Be <em>present.</em> Keep every word.</h1>
   <p class="hero-sub">Sunday morning asks a lot of you. Linger makes sure nothing gets lost in it.</p>
   <div class="hero-cta" id="notify">
@@ -700,20 +706,6 @@
     </div>
   </div>
 </section>
-
-<hr class="section-divider">
-
-<!-- PHOTO BAND -->
-<div class="photo-band-wrapper">
-  <div class="floating-icon">
-    <img src="./Linger-icon.png" alt="Linger app icon">
-    <span class="floating-icon-label">Linger</span>
-  </div>
-  <div class="photo-band">
-    <img class="photo" src="./congregation.jpg" alt="Congregation taking notes during a sermon">
-    <div class="photo-band-overlay"></div>
-  </div>
-</div>
 
 <hr class="section-divider">
 <section id="audience">
