@@ -645,7 +645,7 @@
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;">
-    <img src="./Linger-icon.png" alt="" style="width:32px;height:32px;border-radius:7px;display:block;">
+    <img src="/mnt/user-data/uploads/Linger-icon.png" alt="" style="width:32px;height:32px;border-radius:7px;display:block;">
     Linger
   </a>
   <ul class="nav-links">
@@ -671,7 +671,7 @@
   </div>
 
   <div class="hero-icon">
-    <img src="./Linger-icon.png" alt="Linger app icon">
+    <img src="/mnt/user-data/uploads/Linger-icon.png" alt="Linger app icon">
   </div>
 </section>
 
@@ -712,9 +712,10 @@
     <h3 class="audience-title">Stop losing the sermon by Monday.</h3>
     <p class="audience-body">Linger works quietly in the background while you listen. Tap to bookmark a moment, flag a question, or jot a thought. You'll have structured notes — scripture, main points, your own reflections — waiting when the service ends.</p>
     <div class="audience-email-form">
-      <input type="email" placeholder="Your email" autocomplete="email">
-      <button type="button">Get early access</button>
+      <input id="individual-email" type="email" placeholder="Your email" autocomplete="email">
+      <button type="button" onclick="submitForm('individual')">Get early access</button>
     </div>
+    <p id="individual-msg" style="font-size:0.8rem;margin-top:0.6rem;min-height:1.2em;color:var(--terra);"></p>
   </div>
 
   <div class="audience-card highlight">
@@ -722,9 +723,10 @@
     <h3 class="audience-title">Give your whole congregation a better experience.</h3>
     <p class="audience-body">Partner with Linger to provide a clean audio feed directly from your tech booth. Every person in the room gets studio-quality notes. No setup required for your congregation — just show up. Pilot pricing available for early partner churches.</p>
     <div class="audience-email-form">
-      <input type="email" placeholder="Your work email" autocomplete="email">
-      <button type="button">Let's talk</button>
+      <input id="church-email" type="email" placeholder="Your work email" autocomplete="email">
+      <button type="button" onclick="submitForm('church')">Let's talk</button>
     </div>
+    <p id="church-msg" style="font-size:0.8rem;margin-top:0.6rem;min-height:1.2em;color:var(--terra);"></p>
   </div>
 
 </section>
@@ -745,6 +747,45 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
+
+  const WORKER_URL = 'https://linger-contacts.robert-fdf.workers.dev/';
+
+  async function submitForm(type) {
+    const input = document.getElementById(type + '-email');
+    const msg = document.getElementById(type + '-msg');
+    const email = input.value.trim();
+
+    if (!email || !email.includes('@')) {
+      msg.textContent = 'Please enter a valid email address.';
+      msg.style.color = 'var(--muted)';
+      return;
+    }
+
+    msg.textContent = 'Sending...';
+    msg.style.color = 'var(--muted)';
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, type })
+      });
+      const data = await res.json();
+      if (data.success) {
+        msg.textContent = type === 'church'
+          ? 'Got it — we\'ll be in touch soon.'
+          : 'You\'re on the list. We\'ll let you know when Linger launches.';
+        msg.style.color = 'var(--terra)';
+        input.value = '';
+      } else {
+        msg.textContent = 'Something went wrong. Please try again.';
+        msg.style.color = 'var(--muted)';
+      }
+    } catch (e) {
+      msg.textContent = 'Something went wrong. Please try again.';
+      msg.style.color = 'var(--muted)';
+    }
+  }
 </script>
 
 </body>
