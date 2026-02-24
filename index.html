@@ -656,17 +656,18 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 860px) {
     .steps { grid-template-columns: 1fr; }
-    .step { border-right: none; border-bottom: 1px solid var(--rule); }
+    .step { border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 1.75rem; }
     .step:last-child { border-bottom: none; }
     .plans { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
     nav { padding: 1rem 1.25rem; }
     #hero, #how, #pricing { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .steps { border-radius: 0; border-left: none; border-right: none; }
+    .step { padding: 1.75rem 1.25rem; }
     .plans { grid-template-columns: 1fr; }
     footer { flex-direction: column; align-items: flex-start; }
     .nav-links { display: none; }
-    .hero-deco { display: none; }
   }
 </style>
 </head>
@@ -745,12 +746,12 @@
     <div class="step">
       <div class="step-num">01</div>
       <h3 class="step-title">Arrive & connect</h3>
-      <p class="step-body">Open Linger and select your church. If your church is partnered, you're automatically connected to a studio-quality audio stream. If not, tap once to start local recording from your phone.</p>
+      <p class="step-body">Open Linger and select your church. If your church is partnered, you're automatically connected to a studio-quality audio stream — no setup, no recording, nothing to manage.</p>
     </div>
     <div class="step">
       <div class="step-num">02</div>
       <h3 class="step-title">Worship, undistracted</h3>
-      <p class="step-body">The app runs quietly in the background. Tap a single button to bookmark a moment, flag a question, or jot a thought. Linger handles the rest — every word, every scripture, every slide.</p>
+      <p class="step-body">While the sermon unfolds, Linger captures every word. Tap a single button to bookmark a moment, flag a question, or jot a thought. Linger handles the rest — every scripture, every slide.</p>
     </div>
     <div class="step">
       <div class="step-num">03</div>
