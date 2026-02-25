@@ -157,14 +157,14 @@
     line-height: 1.2;
   }
 
-  /* ── EMAIL FORM (audience cards only) ── */
+  /* ── EMAIL FORM (audience cards) ── */
   .audience-email-form {
     display: flex;
     gap: 0;
-    border: 1px solid rgba(26,23,20,0.2);
+    border: 1px solid rgba(26,23,20,0.15);
     border-radius: 3px;
     overflow: hidden;
-    background: rgba(255,255,255,0.6);
+    background: #fff;
     transition: border-color 0.2s, box-shadow 0.2s;
     margin-top: 0.5rem;
   }
@@ -443,40 +443,6 @@
     line-height: 1.65;
   }
 
-  /* ── KEEP YOUR PEN ── */
-  .pen-section {
-    background: var(--cream-cool);
-    border-top: 1px solid var(--rule-light);
-    border-bottom: 1px solid var(--rule-light);
-  }
-  #pen {
-    padding: 6rem 2.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  .pen-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--terra);
-    margin-bottom: 1.25rem;
-  }
-  .pen-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: 500;
-    font-style: italic;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
-  .pen-body {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: var(--muted);
-    max-width: 60ch;
-  }
-
   /* ── DIFFERENTIATION ── */
   #why {
     padding: 7rem 2.5rem;
@@ -518,9 +484,12 @@
     color: var(--ink);
   }
 
-  /* ── AUDIENCE CTA ── */
+  /* ── AUDIENCE CTA (terracotta band) ── */
+  .audience-band {
+    background: var(--terra);
+  }
   #audience {
-    padding: 7rem 2.5rem;
+    padding: 6rem 2.5rem;
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
@@ -528,22 +497,21 @@
     gap: 1.25rem;
   }
   .audience-card {
-    border: 1px solid var(--rule);
+    border: 1px solid rgba(26,23,20,0.06);
     border-radius: 4px;
     padding: 2.75rem 2.5rem;
-    background: var(--card);
+    background: var(--cream);
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: box-shadow 0.3s;
   }
   .audience-card:hover {
-    border-color: rgba(26,23,20,0.2);
-    box-shadow: 0 4px 24px rgba(26,23,20,0.06);
+    box-shadow: 0 8px 32px rgba(26,23,20,0.1);
   }
   .audience-card.highlight {
-    border-color: var(--terra);
-    background: rgba(181,96,61,0.04);
+    background: var(--cream-warm);
+    border-color: rgba(26,23,20,0.08);
   }
   .audience-label {
     font-size: 0.75rem;
@@ -557,6 +525,7 @@
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.25;
+    color: var(--ink);
   }
   .audience-body {
     font-size: 0.9rem;
@@ -599,6 +568,102 @@
     opacity: 0.6;
   }
 
+  /* ── FAQ ── */
+  #faq {
+    padding: 7rem 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-header { margin-bottom: 3rem; }
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--rule);
+  }
+  .faq-item:first-child {
+    border-top: 1px solid var(--rule);
+  }
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    position: relative;
+  }
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--terra);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .faq-icon::before {
+    width: 14px; height: 1.5px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .faq-icon::after {
+    width: 1.5px; height: 14px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .faq-item.open .faq-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    opacity: 0;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 600px;
+  }
+  .faq-answer-inner {
+    padding: 0 0 1.75rem;
+  }
+  .faq-answer-inner p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+  .faq-answer-inner p:last-child { margin-bottom: 0; }
+  .faq-answer-inner strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .faq-price-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--terra);
+    border: 1px solid rgba(181,96,61,0.25);
+    border-radius: 3px;
+    padding: 0.1rem 0.45rem;
+    vertical-align: middle;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 860px) {
     .steps { grid-template-columns: 1fr; }
@@ -616,9 +681,8 @@
     nav { padding: 1rem 1.25rem; }
     #hero { padding: 7rem 1.25rem 4rem; }
     #gap { padding: 5rem 1.25rem; }
-    #deeper, #sunday, #why { padding-left: 1.25rem; padding-right: 1.25rem; }
-    #pen { padding-left: 1.25rem; padding-right: 1.25rem; }
-    #audience { padding: 4rem 1.25rem; }
+    #deeper, #sunday, #why, #faq { padding-left: 1.25rem; padding-right: 1.25rem; }
+    #audience { padding: 3.5rem 1.25rem; }
     .steps { border-radius: 0; border-left: none; border-right: none; }
     .step { padding: 1.75rem 1.25rem; }
     .scripture-interlude { padding: 3.5rem 1.5rem; }
@@ -738,15 +802,6 @@
   </section>
 </div>
 
-<!-- ════════ KEEP YOUR PEN ════════ -->
-<div class="pen-section">
-  <section id="pen">
-    <p class="pen-label">For note-takers</p>
-    <h2 class="pen-headline">Keep your pen.</h2>
-    <p class="pen-body">A lot of people take notes during the service — pen and journal, every Sunday. It helps you focus. It's a practice worth keeping. Linger doesn't replace that. After the service, snap a photo of your journal page, and Linger weaves your handwriting into the full picture: every word that was spoken, every scripture on screen, every thought you captured. Everything you wrote, plus everything you couldn't.</p>
-  </section>
-</div>
-
 <!-- ════════ DIFFERENTIATION ════════ -->
 <section id="why">
   <div class="why-header">
@@ -770,9 +825,8 @@
   </div>
 </section>
 
-<hr class="section-divider">
-
-<!-- ════════ AUDIENCE CTAs ════════ -->
+<!-- ════════ AUDIENCE CTAs — terracotta band ════════ -->
+<div class="audience-band">
 <section id="audience">
 
   <div class="audience-card">
@@ -798,6 +852,109 @@
   </div>
 
 </section>
+</div>
+
+<!-- ════════ FAQ ════════ -->
+<div style="background:var(--cream-cool);border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light);">
+<section id="faq">
+  <div class="faq-header">
+    <p class="section-label">Questions</p>
+    <h2 class="section-headline">What you're probably wondering</h2>
+  </div>
+
+  <div class="faq-grid">
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What exactly does Linger do?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        <p>Linger captures everything that happens during a sermon — the pastor's words, the slides and scripture on screen, and your own thoughts and notes — and synthesizes it all into one polished document, delivered to you after the service.</p>
+        <p>If you take handwritten notes, you can snap a photo of your journal page afterward. Linger reads your handwriting and weaves it into the full picture alongside the transcript and slides. Everything you wrote, plus everything you couldn't.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Does Linger replace my pen and notebook?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        <p>No — and we'd never want it to. Many people have a deep connection to taking notes by hand. Linger is built to complete what your notebook can't capture on its own: the exact words, the scripture references that flew by, the slide you missed, the thought that disappeared before you could write it down.</p>
+        <p>Keep your pen. Linger fills in the gaps.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How does it work if my church hasn't partnered with Linger?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        <p>You can still use Linger on your own. The app captures audio from your phone's microphone — just open it before the service starts and let it run. The notes won't be quite as polished as they'd be with a direct audio feed from the church, but the core experience still works: transcription, synthesis, your annotations, everything in one place.</p>
+        <p>When your church partners with Linger, it gets even better — studio-quality audio, automatic slide capture, and the whole congregation gets notes without anyone recording anything on their phone.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What about the sermon archive and knowledge layer?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        <p>This is what makes Linger fundamentally different from a note-taking app. Over time, Linger builds a searchable, structured history of your church's sermons — every transcript, every scripture reference, every theme. When you get your notes on Sunday, they automatically connect to related sermons from your church's past.</p>
+        <p>You can search "when did we talk about doubt?" and find every relevant sermon. Your pastor can see what your church has taught about a topic over years. New members can explore the church's teaching history. The archive grows with every service and becomes more valuable the longer your church uses Linger.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Will Linger be free?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        <p>There will always be a free tier — you'll be able to capture a sermon and get AI-synthesized notes without paying anything. We want the first experience to feel like magic, not like a paywall.</p>
+        <p>We're still finalizing official pricing, but we anticipate it will land somewhere in these ranges:</p>
+        <p><strong>For individuals,</strong> a Pro plan around <span class="faq-price-tag">~$2/month</span> unlocks full access to the sermon archive, search, AI-powered exploration, and tools to go deeper all week. We want this to feel like an impulse — less than a coffee.</p>
+        <p><strong>For churches,</strong> Partner plans will likely start around <span class="faq-price-tag">~$69/month</span> and scale with congregation size. Your church connects from the tech booth, and every person in the room gets full-featured notes — no individual setup required.</p>
+        <p>Pricing will be finalized closer to launch. Sign up for early access and we'll keep you in the loop.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is my data private? Who owns the sermon content?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        <p>Your personal notes and annotations are yours — always private, never shared with your church or anyone else. Churches own their sermon content. Linger is a tool for the listener, not a surveillance tool for leadership. Church administrators get aggregate engagement analytics, not visibility into individual congregants' notes.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        When does Linger launch?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        <p>Linger is in active development. We're testing with a small group of partner churches first and plan to open up more broadly soon. Sign up for early access and you'll be the first to know — and the first to try it.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What denomination is Linger for?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        <p>All of them. Linger is theologically neutral — it captures and organizes whatever your pastor teaches. It works across Protestant, Catholic, non-denominational, and any other tradition where sermons or homilies are a regular part of worship. The tool adapts to your church, not the other way around.</p>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+</div>
 
 <!-- ════════ FOOTER ════════ -->
 <footer>
@@ -813,6 +970,13 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
+
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
 
   const WORKER_URL = 'https://linger-contacts.robert-fdf.workers.dev/';
 
