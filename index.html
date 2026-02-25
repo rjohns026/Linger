@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Linger — AI-Powered Sermon Notes</title>
+<title>Linger — Spiritual Formation for the Age of Distraction</title>
 <link rel="icon" type="image/png" href="./Linger-icon.png">
 <link rel="apple-touch-icon" href="./Linger-icon.png">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Linger — AI-Powered Sermon Notes">
-<meta property="og:description" content="Be present. Keep every word. Linger captures what the pastor says and delivers a polished set of notes after every service.">
+<meta property="og:title" content="Linger — Spiritual Formation for the Age of Distraction">
+<meta property="og:description" content="Linger helps you hold onto what matters most on Sunday morning — and go deeper with it all week.">
 <meta property="og:image" content="./og-image.png">
 <meta property="og:url" content="https://trylinger.com">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Linger — AI-Powered Sermon Notes">
-<meta name="twitter:description" content="Be present. Keep every word.">
+<meta name="twitter:title" content="Linger — Spiritual Formation for the Age of Distraction">
+<meta name="twitter:description" content="Linger helps you hold onto what matters most on Sunday morning — and go deeper with it all week.">
 <meta name="twitter:image" content="./og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,11 +25,16 @@
 
   :root {
     --cream: #E8E2D4;
+    --cream-warm: #E3DACB;
+    --cream-cool: #ECEAE3;
     --ink: #1A1714;
+    --ink-light: #2A2520;
     --terra: #B5603D;
     --terra-light: #C87A5A;
+    --terra-wash: rgba(181,96,61,0.06);
     --muted: #6B6560;
     --rule: rgba(26,23,20,0.12);
+    --rule-light: rgba(26,23,20,0.08);
     --card: rgba(255,255,255,0.45);
   }
 
@@ -79,25 +84,16 @@
     letter-spacing: 0.01em;
     color: var(--ink);
     text-decoration: none;
-  }
-  .nav-links {
     display: flex;
-    gap: 2rem;
-    list-style: none;
     align-items: center;
+    gap: 0.6rem;
   }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
+  .nav-logo img {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    display: block;
   }
-  .nav-links a:hover { color: var(--ink); }
-  nav.scrolled .nav-logo { color: var(--ink); }
-  nav.scrolled .nav-links a { color: var(--muted); }
-  nav.scrolled .nav-links a:hover { color: var(--ink); }
 
   /* ── BUTTONS ── */
   .btn-primary {
@@ -118,126 +114,34 @@
   }
   .btn-primary:hover { background: var(--terra-light); transform: translateY(-1px); }
 
-  .btn-outline {
+  .btn-hero {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: transparent;
-    color: var(--ink);
+    gap: 0.6rem;
+    background: var(--terra);
+    color: #fff;
     text-decoration: none;
-    padding: 0.7rem 1.6rem;
+    padding: 0.9rem 2.25rem;
     border-radius: 3px;
-    font-size: 0.9rem;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
     letter-spacing: 0.03em;
-    border: 1px solid rgba(26,23,20,0.3);
+    border: none;
     cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
+    transition: background 0.2s, transform 0.15s;
   }
-  .btn-outline:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-hero:hover { background: var(--terra-light); transform: translateY(-1px); }
+  .btn-hero svg { transition: transform 0.2s; }
+  .btn-hero:hover svg { transform: translateX(2px); }
 
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 2.5rem 5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .hero-icon-right {
-    position: absolute;
-    right: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
-    animation: fadeUp 0.7s 0.3s forwards;
-  }
-  .hero-icon-right img {
-    width: 120px;
-    height: 120px;
-    border-radius: 26px;
-    display: block;
-  }
-
-  @media (max-width: 700px) {
-    .hero-icon-right { display: none; }
-  }
-
-  .hero-eyebrow {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--terra);
-    margin-bottom: 1.75rem;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.1s forwards;
-  }
-
-  .hero-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    max-width: 14ch;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.25s forwards;
-  }
-
-  .hero-headline em {
-    font-style: italic;
-    color: var(--terra);
-  }
-
-  .hero-sub {
-    margin-top: 1.75rem;
-    font-size: 1.125rem;
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 44ch;
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.4s forwards;
-  }
-
-  .hero-cta {
-    margin-top: 2.5rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.55s forwards;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 560px) {
-    #hero { padding: 7rem 1.25rem 4rem; }
-  }
-
-  /* ── DIVIDER ── */
+  /* ── SECTION UTILITIES ── */
   .section-divider {
     width: 100%;
     border: none;
     border-top: 1px solid var(--rule);
     margin: 0;
   }
-
-  /* ── HOW IT WORKS ── */
-  #how {
-    padding: 6rem 2.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
   .section-label {
     font-size: 0.75rem;
     font-weight: 500;
@@ -246,326 +150,14 @@
     color: var(--terra);
     margin-bottom: 1rem;
   }
-
   .section-headline {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.75rem, 3.5vw, 2.75rem);
     font-weight: 500;
     line-height: 1.2;
-    max-width: 22ch;
   }
 
-  .section-intro {
-    margin-top: 1rem;
-    color: var(--muted);
-    max-width: 50ch;
-    font-size: 1rem;
-  }
-
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    margin-top: 4rem;
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .step {
-    padding: 2.5rem 2rem 2.5rem;
-    border-right: 1px solid var(--rule);
-    background: var(--card);
-    transition: background 0.3s;
-    position: relative;
-  }
-  .step:last-child { border-right: none; }
-  .step:hover { background: rgba(255,255,255,0.65); }
-
-  .step-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: var(--terra);
-    opacity: 0.4;
-    line-height: 1;
-    margin-bottom: 1.5rem;
-  }
-
-  .step-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
-  }
-
-  .step-body {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  /* ── PRICING ── */
-  #pricing {
-    padding: 6rem 2.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .pricing-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 3.5rem;
-  }
-
-  .plans {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-  }
-
-  .plan {
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    padding: 2rem 1.75rem;
-    background: var(--card);
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    position: relative;
-  }
-  .plan:hover {
-    border-color: rgba(26,23,20,0.25);
-    box-shadow: 0 4px 24px rgba(26,23,20,0.06);
-  }
-
-  .plan.featured {
-    border-color: var(--terra);
-    background: rgba(181,96,61,0.05);
-  }
-
-  .plan-badge {
-    position: absolute;
-    top: -1px;
-    left: 1.75rem;
-    background: var(--terra);
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.2rem 0.65rem;
-    border-radius: 0 0 3px 3px;
-  }
-
-  .plan-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-    margin-top: 0.5rem;
-  }
-
-  .plan-for {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-  }
-
-  .plan-price {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 500;
-    line-height: 1;
-    margin-bottom: 0.35rem;
-  }
-
-  .plan-price span {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--muted);
-  }
-
-  .plan-divider {
-    border: none;
-    border-top: 1px solid var(--rule);
-    margin: 1.5rem 0;
-  }
-
-  .plan-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    flex: 1;
-    margin-bottom: 2rem;
-  }
-
-  .plan-features li {
-    font-size: 0.85rem;
-    color: var(--muted);
-    display: flex;
-    gap: 0.6rem;
-    align-items: flex-start;
-    line-height: 1.4;
-  }
-
-  .plan-features li::before {
-    content: '—';
-    color: var(--terra);
-    opacity: 0.5;
-    flex-shrink: 0;
-    margin-top: 0.05em;
-  }
-
-  /* ── EMAIL FORM ── */
-  .email-form {
-    display: flex;
-    gap: 0;
-    max-width: 420px;
-    border: 1px solid rgba(26,23,20,0.25);
-    border-radius: 3px;
-    overflow: hidden;
-    background: rgba(255,255,255,0.55);
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .email-form:focus-within {
-    border-color: var(--terra);
-    box-shadow: 0 0 0 3px rgba(181,96,61,0.1);
-  }
-  .email-form input {
-    flex: 1;
-    padding: 0.8rem 1rem;
-    border: none;
-    background: transparent;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--ink);
-    outline: none;
-  }
-  .email-form input::placeholder { color: var(--muted); opacity: 0.7; }
-  .email-form button {
-    padding: 0.8rem 1.25rem;
-    background: var(--terra);
-    color: #fff;
-    border: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
-  .email-form button:hover { background: var(--terra-light); }
-  .form-note {
-    margin-top: 0.65rem;
-    font-size: 0.775rem;
-    color: var(--muted);
-    opacity: 0.7;
-  }
-
-  /* ── PHOTO BAND ── */
-  .photo-band {
-    position: relative;
-    width: 100%;
-    height: 480px;
-    overflow: hidden;
-    margin-top: 0;
-  }
-  .photo-band img.photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 40%;
-    display: block;
-    filter: brightness(0.72) saturate(0.85);
-  }
-  .photo-band-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(232,226,212,0.15) 0%, rgba(26,23,20,0.25) 100%);
-  }
-  .floating-icon {
-    position: absolute;
-    top: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.55rem;
-    z-index: 10;
-  }
-  .floating-icon img {
-    width: 120px;
-    height: 120px;
-    border-radius: 27px;
-    box-shadow: 0 20px 50px rgba(26,23,20,0.3), 0 4px 16px rgba(26,23,20,0.15);
-    display: block;
-  }
-  .floating-icon-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 400;
-    color: #fff;
-    opacity: 0.8;
-    letter-spacing: 0.04em;
-  }
-  .photo-band-wrapper {
-    position: relative;
-    padding-top: 70px;
-  }
-
-  /* ── AUDIENCE CTA ── */
-  #audience {
-    padding: 6rem 2.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-  .audience-card {
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    padding: 2.75rem 2.5rem;
-    background: var(--card);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  .audience-card:hover {
-    border-color: rgba(26,23,20,0.2);
-    box-shadow: 0 4px 24px rgba(26,23,20,0.06);
-  }
-  .audience-card.highlight { border-color: var(--terra); background: rgba(181,96,61,0.04); }
-  .audience-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--terra);
-  }
-  .audience-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 1.25;
-  }
-  .audience-body {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.65;
-    flex: 1;
-  }
+  /* ── EMAIL FORM (audience cards only) ── */
   .audience-email-form {
     display: flex;
     gap: 0;
@@ -607,8 +199,370 @@
     white-space: nowrap;
   }
   .audience-email-form button:hover { background: var(--terra-light); }
-  @media (max-width: 680px) {
-    #audience { grid-template-columns: 1fr; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 2.5rem 6rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-icon-right {
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    animation: fadeUp 0.7s 0.3s forwards;
+  }
+  .hero-icon-right img {
+    width: 120px;
+    height: 120px;
+    border-radius: 26px;
+    display: block;
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s forwards;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.75rem, 6vw, 4.75rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 18ch;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.25s forwards;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--terra);
+  }
+  .hero-sub {
+    margin-top: 1.75rem;
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 48ch;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .hero-cta-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    opacity: 0.6;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── THE GAP (PROBLEM) ── */
+  .gap-section {
+    background: var(--cream);
+  }
+  #gap {
+    padding: 7rem 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .gap-text p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .gap-text p:last-child { margin-bottom: 0; }
+
+  /* ── SCRIPTURE INTERLUDE ── */
+  .scripture-band {
+    background: var(--cream-warm);
+    border-top: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .scripture-interlude {
+    padding: 5rem 2.5rem;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .scripture-interlude blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  .scripture-interlude cite {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--terra);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── ALL WEEK (KNOWLEDGE LAYER) — dark section ── */
+  .deeper-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  #deeper {
+    padding: 7rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .deeper-header {
+    margin-bottom: 3.5rem;
+  }
+  .deeper-header .section-label {
+    color: var(--terra-light);
+  }
+  .deeper-header .section-headline {
+    color: var(--cream);
+  }
+  .deeper-header .section-intro {
+    margin-top: 1.25rem;
+    color: rgba(232,226,212,0.6);
+    max-width: 58ch;
+    font-size: 1rem;
+  }
+  .deeper-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .deeper-card {
+    border: 1px solid rgba(232,226,212,0.1);
+    border-radius: 4px;
+    padding: 2.25rem 2rem;
+    background: rgba(232,226,212,0.04);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .deeper-card:hover {
+    border-color: rgba(232,226,212,0.18);
+    background: rgba(232,226,212,0.07);
+  }
+  .deeper-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(181,96,61,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+  }
+  .deeper-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0.65rem;
+    line-height: 1.3;
+    color: var(--cream);
+  }
+  .deeper-card p {
+    font-size: 0.9rem;
+    color: rgba(232,226,212,0.6);
+    line-height: 1.65;
+  }
+
+  /* ── SUNDAY (HOW IT WORKS) ── */
+  .sunday-section {
+    background: var(--cream);
+  }
+  #sunday {
+    padding: 7rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-intro {
+    margin-top: 1rem;
+    color: var(--muted);
+    max-width: 50ch;
+    font-size: 1rem;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 3.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .step {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--rule);
+    background: var(--card);
+    transition: background 0.3s;
+  }
+  .step:last-child { border-right: none; }
+  .step:hover { background: rgba(255,255,255,0.65); }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--terra);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .step-body {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── KEEP YOUR PEN ── */
+  .pen-section {
+    background: var(--cream-cool);
+    border-top: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule-light);
+  }
+  #pen {
+    padding: 6rem 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .pen-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.25rem;
+  }
+  .pen-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .pen-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+
+  /* ── DIFFERENTIATION ── */
+  #why {
+    padding: 7rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .why-header {
+    margin-bottom: 3rem;
+  }
+  .why-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .why-line {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    align-items: baseline;
+  }
+  .why-line:first-child {
+    border-top: 1px solid var(--rule);
+  }
+  .why-line-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terra);
+    opacity: 0.7;
+  }
+  .why-line-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── AUDIENCE CTA ── */
+  #audience {
+    padding: 7rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .audience-card {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 2.75rem 2.5rem;
+    background: var(--card);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .audience-card:hover {
+    border-color: rgba(26,23,20,0.2);
+    box-shadow: 0 4px 24px rgba(26,23,20,0.06);
+  }
+  .audience-card.highlight {
+    border-color: var(--terra);
+    background: rgba(181,96,61,0.04);
+  }
+  .audience-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terra);
+  }
+  .audience-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .audience-body {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+    flex: 1;
   }
 
   /* ── FOOTER ── */
@@ -623,30 +577,22 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
-
   .footer-logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--ink);
     text-decoration: none;
-  }
-
-  .footer-links {
     display: flex;
-    gap: 1.75rem;
-    list-style: none;
+    align-items: center;
+    gap: 0.5rem;
   }
-
-  .footer-links a {
-    font-size: 0.8rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    transition: color 0.2s;
+  .footer-logo img {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: block;
   }
-  .footer-links a:hover { color: var(--ink); }
-
   .footer-copy {
     font-size: 0.775rem;
     color: var(--muted);
@@ -658,65 +604,182 @@
     .steps { grid-template-columns: 1fr; }
     .step { border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 1.75rem; }
     .step:last-child { border-bottom: none; }
-    .plans { grid-template-columns: 1fr 1fr; }
-    #audience { grid-template-columns: 1fr; padding: 3rem 1.25rem; gap: 1rem; }
+    .deeper-grid { grid-template-columns: 1fr; }
+    #audience { grid-template-columns: 1fr; gap: 1rem; }
     .audience-card { padding: 2rem 1.5rem; }
+    .why-line { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+  @media (max-width: 700px) {
+    .hero-icon-right { display: none; }
   }
   @media (max-width: 560px) {
     nav { padding: 1rem 1.25rem; }
-    #hero, #how, #pricing { padding-left: 1.25rem; padding-right: 1.25rem; }
+    #hero { padding: 7rem 1.25rem 4rem; }
+    #gap { padding: 5rem 1.25rem; }
+    #deeper, #sunday, #why { padding-left: 1.25rem; padding-right: 1.25rem; }
+    #pen { padding-left: 1.25rem; padding-right: 1.25rem; }
+    #audience { padding: 4rem 1.25rem; }
     .steps { border-radius: 0; border-left: none; border-right: none; }
     .step { padding: 1.75rem 1.25rem; }
-    .plans { grid-template-columns: 1fr; }
-    footer { flex-direction: column; align-items: flex-start; }
-    .nav-links { display: none; }
-    .email-form { max-width: 100%; }
+    .scripture-interlude { padding: 3.5rem 1.5rem; }
+    footer { flex-direction: column; align-items: flex-start; padding: 2rem 1.25rem; }
+    .hero-cta { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ════════ NAV (simplified: logo + scroll CTA) ════════ -->
 <nav id="nav">
-  <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;">
-    <img src="./Linger-icon.png" alt="" style="width:32px;height:32px;border-radius:7px;display:block;">
+  <a href="#" class="nav-logo">
+    <img src="./Linger-icon.png" alt="">
     Linger
   </a>
-  <ul class="nav-links">
-    <li><a href="#audience">For individuals</a></li>
-    <li><a href="#audience">For churches</a></li>
-    <li><a href="#notify" class="btn-primary" style="padding:0.55rem 1.25rem;font-size:0.82rem;color:#fff;">Get early access</a></li>
-  </ul>
+  <a href="#audience" class="btn-primary" style="padding:0.55rem 1.25rem;font-size:0.82rem;">Get early access</a>
 </nav>
 
-<!-- HERO -->
+<!-- ════════ HERO ════════ -->
 <section id="hero">
   <div class="hero-icon-right">
     <img src="./Linger-icon.png" alt="Linger app icon">
   </div>
-  <p class="hero-eyebrow">AI-Powered Sermon Notes</p>
-  <h1 class="hero-headline">Be <em>present.</em><br>Keep every word.</h1>
-  <p class="hero-sub">Sunday morning asks a lot of you. Linger makes sure nothing gets lost in it.</p>
-  <div class="hero-cta" id="notify">
-    <div>
-      <div class="email-form">
-        <input id="hero-email" type="email" placeholder="Your email address" autocomplete="email">
-        <button type="button" onclick="submitForm('individual', 'hero')">Notify me</button>
+  <p class="hero-eyebrow">AI-Powered Spiritual Development Platform</p>
+  <h1 class="hero-headline">Spiritual formation for the <em>age of distraction.</em></h1>
+  <p class="hero-sub">Linger helps you hold onto what matters most on Sunday morning — and go deeper with it all week.</p>
+  <div class="hero-cta">
+    <a href="#audience" class="btn-hero">
+      Get early access
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+    </a>
+    <span class="hero-cta-note">Coming soon — join the waitlist</span>
+  </div>
+</section>
+
+<!-- ════════ THE GAP (PROBLEM) ════════ -->
+<div class="gap-section">
+  <hr class="section-divider">
+  <section id="gap">
+    <div class="gap-text">
+      <p class="section-label">The gap</p>
+      <h2 class="section-headline">The service ends. The forgetting begins.</h2>
+      <p style="margin-top:1.5rem;">Your pastor spent twenty hours preparing what you just heard. You sat in the pew, fully engaged. By Tuesday, most of it has faded. The scripture reference you wanted to look up — gone. The thought that felt so important in the moment — you can't quite reconstruct it.</p>
+      <p>It's not a memory problem. It's a tools problem. Your notebook can't write fast enough. Your phone pulls you out of the moment. And even if you captured everything, your notes sit in isolation — disconnected from the full picture, the history, the broader context of what your church has taught.</p>
+      <p>Hearing the word is one thing. Lingering with it — chewing on it, returning to it, letting it take root — is another. That's the gap Linger was built to close.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ════════ SCRIPTURE INTERLUDE ════════ -->
+<div class="scripture-band">
+  <div class="scripture-interlude">
+    <blockquote>"Anyone who listens to the word but does not do what it says is like someone who looks at his face in a mirror and, after looking at himself, goes away and immediately forgets what he looks like."</blockquote>
+    <cite>— James 1:23–24</cite>
+  </div>
+</div>
+
+<!-- ════════ GO DEEPER (KNOWLEDGE LAYER) — dark section ════════ -->
+<div class="deeper-band">
+  <section id="deeper">
+    <div class="deeper-header">
+      <p class="section-label">Go deeper</p>
+      <h2 class="section-headline">Sunday is the starting point.</h2>
+      <p class="section-intro">Behind every message sits your church's full teaching history — and beyond that, centuries of theology. Linger connects it all, giving you a place to explore long after the last song ends.</p>
+    </div>
+
+    <div class="deeper-grid">
+      <div class="deeper-card">
+        <div class="deeper-card-icon">🔍</div>
+        <h3>Search your church's history</h3>
+        <p>"When did we talk about doubt?" — Linger surfaces every message that touched it, organized by date with key excerpts. Your church's teaching becomes a living library, not a graveyard of hour-long recordings.</p>
       </div>
-      <p id="hero-msg" class="form-note">Linger is in development. Be the first to know when it launches.</p>
+      <div class="deeper-card">
+        <div class="deeper-card-icon">💬</div>
+        <h3>Ask questions. Follow threads.</h3>
+        <p>Chat with Linger about what you heard on Sunday. Get additional references, explore connections to past messages, trace a theme across months of teaching. It's not a generic AI — it knows your church.</p>
+      </div>
+      <div class="deeper-card">
+        <div class="deeper-card-icon">📚</div>
+        <h3>Centuries of theology, connected</h3>
+        <p>When your pastor references Augustine's view on grace, Linger can take you there. A curated theological knowledge base connects what you hear on Sunday to the broader Christian tradition.</p>
+      </div>
+      <div class="deeper-card">
+        <div class="deeper-card-icon">🗓️</div>
+        <h3>Build a plan for the week</h3>
+        <p>Custom devotionals, reading plans, and study guides — built around what your church is teaching and what you're personally working through. The message becomes a doorway, not a dead end.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════ SUNDAY MORNING (HOW IT WORKS) ════════ -->
+<div class="sunday-section">
+  <section id="sunday">
+    <p class="section-label">Sunday morning</p>
+    <h2 class="section-headline">Three streams. One document. Nothing missed.</h2>
+    <p class="section-intro">Linger listens so you don't have to. Your only job is to be present.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Arrive &amp; connect</h3>
+        <p class="step-body">Open Linger and select your church. If your church is partnered, you're automatically connected to a studio-quality audio stream. No setup, no recording, nothing to manage.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Be present</h3>
+        <p class="step-body">While the message unfolds, Linger captures every word. Tap to bookmark a moment, flag a question, or jot a thought. Prefer pen and paper? Keep writing — snap a photo after and Linger weaves your notes into the full picture.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Notes, delivered</h3>
+        <p class="step-body">Minutes after the service, a structured document arrives: main points, every scripture reference, your annotations in context — and automatic connections to related messages from your church's archive.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════ KEEP YOUR PEN ════════ -->
+<div class="pen-section">
+  <section id="pen">
+    <p class="pen-label">For note-takers</p>
+    <h2 class="pen-headline">Keep your pen.</h2>
+    <p class="pen-body">A lot of people take notes during the service — pen and journal, every Sunday. It helps you focus. It's a practice worth keeping. Linger doesn't replace that. After the service, snap a photo of your journal page, and Linger weaves your handwriting into the full picture: every word that was spoken, every scripture on screen, every thought you captured. Everything you wrote, plus everything you couldn't.</p>
+  </section>
+</div>
+
+<!-- ════════ DIFFERENTIATION ════════ -->
+<section id="why">
+  <div class="why-header">
+    <p class="section-label">Why Linger</p>
+    <h2 class="section-headline">You could keep using what you have.</h2>
+  </div>
+
+  <div class="why-lines">
+    <div class="why-line">
+      <span class="why-line-label">vs. Notebooks</span>
+      <p class="why-line-text">Your notebook captures what you can write. Linger captures everything — and connects it to what your church has taught for years.</p>
+    </div>
+    <div class="why-line">
+      <span class="why-line-label">vs. ChatGPT</span>
+      <p class="why-line-text">ChatGPT can explain a Bible verse. It can't tell you what your pastor said about it last March, or how that connects to Augustine.</p>
+    </div>
+    <div class="why-line">
+      <span class="why-line-label">vs. Recordings</span>
+      <p class="why-line-text">Nobody re-listens to an hour-long recording. Linger turns those archives into knowledge you can search, explore, and learn from.</p>
     </div>
   </div>
 </section>
 
 <hr class="section-divider">
+
+<!-- ════════ AUDIENCE CTAs ════════ -->
 <section id="audience">
 
   <div class="audience-card">
     <p class="audience-label">For individuals</p>
-    <h3 class="audience-title">The sermon was good. You can already feel it fading.</h3>
-    <p class="audience-body">Maybe you take notes. A lot of people do — pen and journal, every Sunday. It helps you focus. It's a practice worth keeping. But even the most diligent note-taker can't write fast enough to catch everything. The scripture reference that flew by. The point made while you were still writing the last one. The thought you had that disappeared before you could get it down.</p>
-    <p class="audience-body" style="margin-top:0.75rem;">Linger doesn't replace your pen. It completes the picture. After the service, snap a photo of your journal page — Linger weaves your handwriting into a full set of notes alongside the transcript, the slides, and every scripture. Everything you wrote, plus everything you couldn't. The sermon, intact. Yours to return to all week.</p>
-    <div class="audience-email-form" style="margin-top:1.25rem;">
+    <h3 class="audience-title">Go deeper than you ever could on your own.</h3>
+    <p class="audience-body">What you hear on Sunday doesn't have to fade by Tuesday. Linger captures everything, connects it to your church's teaching history, and gives you the tools to explore all week — questions, reading plans, and connections you'd never find on your own.</p>
+    <div class="audience-email-form" style="margin-top:0.75rem;">
       <input id="individual-email" type="email" placeholder="Your email" autocomplete="email">
       <button type="button" onclick="submitForm('individual')">Get early access</button>
     </div>
@@ -725,10 +788,9 @@
 
   <div class="audience-card highlight">
     <p class="audience-label">For churches &amp; organizations</p>
-    <h3 class="audience-title">Your pastor spent 20 hours on that sermon. Most of it won't survive the drive home.</h3>
-    <p class="audience-body">You've probably noticed it — people holding their phones up to photograph a slide, or furiously typing while the pastor is mid-sentence. They're trying. But the tools they're using weren't built for this. And for the rest of the congregation, the words just wash over them and disappear.</p>
-    <p class="audience-body" style="margin-top:0.75rem;">Linger gives your whole congregation a way to engage more deeply — not just during the service, but all week. Partner churches connect directly from the tech booth, so every person in the room gets clean, structured notes without lifting a finger. Better retention. Deeper engagement. And no more phones pointed at the screen.</p>
-    <div class="audience-email-form" style="margin-top:1.25rem;">
+    <h3 class="audience-title">Turn your teaching into institutional knowledge.</h3>
+    <p class="audience-body">Your church has years of teaching — theological positions, scripture exposition, pastoral wisdom — but none of it is searchable. Linger gives your congregation a reason to engage beyond Sunday morning and turns your pastor's investment into a permanent, living resource.</p>
+    <div class="audience-email-form" style="margin-top:0.75rem;">
       <input id="church-email" type="email" placeholder="Your work email" autocomplete="email">
       <button type="button" onclick="submitForm('church')">Let's talk</button>
     </div>
@@ -737,39 +799,10 @@
 
 </section>
 
-<hr class="section-divider">
-
-<!-- HOW IT WORKS -->
-<section id="how">
-  <p class="section-label">How it works</p>
-  <h2 class="section-headline">Three streams. One document. Nothing missed.</h2>
-  <p class="section-intro">Linger listens so you don't have to. Your only job is to show up.</p>
-
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3 class="step-title">Arrive & connect</h3>
-      <p class="step-body">Open Linger and select your church. If your church is partnered, you're automatically connected to a studio-quality audio stream — no setup, no recording, nothing to manage.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3 class="step-title">Worship, undistracted</h3>
-      <p class="step-body">While the sermon unfolds, Linger captures every word. Tap a single button to bookmark a moment, flag a question, or jot a thought. Prefer pen and paper? Keep writing — after the service, snap a photo of your journal page and Linger weaves your notes into the full picture. Every scripture, every slide, nothing missed.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3 class="step-title">Notes, delivered</h3>
-      <p class="step-body">Minutes after the service ends, a structured document arrives: the sermon's main points, scripture references with full text, your personal annotations in context, and discussion questions for the week ahead.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- FOOTER -->
+<!-- ════════ FOOTER ════════ -->
 <footer>
-  <a href="#" class="footer-logo" style="display:flex;align-items:center;gap:0.5rem;">
-    <img src="./Linger-icon.png" alt="" style="width:26px;height:26px;border-radius:6px;display:block;">
+  <a href="#" class="footer-logo">
+    <img src="./Linger-icon.png" alt="">
     Linger
   </a>
   <p class="footer-copy">© 2026 Linger. trylinger.com</p>
@@ -783,9 +816,9 @@
 
   const WORKER_URL = 'https://linger-contacts.robert-fdf.workers.dev/';
 
-  async function submitForm(type, source) {
-    const inputId = source === 'hero' ? 'hero-email' : type + '-email';
-    const msgId = source === 'hero' ? 'hero-msg' : type + '-msg';
+  async function submitForm(type) {
+    const inputId = type + '-email';
+    const msgId = type + '-msg';
     const input = document.getElementById(inputId);
     const msg = document.getElementById(msgId);
     const email = input.value.trim();
