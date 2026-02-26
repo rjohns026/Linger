@@ -453,20 +453,10 @@
   }
 
   /* ── WHAT YOUR CONGREGATION GETS ── */
-  .congregation-band {
-    overflow: hidden;
-  }
   #congregation {
-    padding: 6rem 0 6rem 2.5rem;
-    max-width: 1100px;
+    padding: 6rem 2.5rem;
+    max-width: 800px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 3rem;
-    align-items: center;
-  }
-  .congregation-content {
-    /* text column stays within normal page flow */
   }
   .congregation-header {
     margin-bottom: 2.5rem;
@@ -501,14 +491,19 @@
     color: var(--muted);
     line-height: 1.65;
   }
-  .congregation-mockup {
-    position: relative;
-    right: -2.5rem;
-    border-radius: 12px 0 0 12px;
-    overflow: hidden;
-    box-shadow: -8px 16px 48px rgba(26,23,20,0.08);
+
+  /* ── DESKTOP MOCKUP STRIP ── */
+  .mockup-strip {
+    padding: 3rem 2.5rem 4rem;
+    max-width: 960px;
+    margin: 0 auto;
   }
-  .congregation-mockup img {
+  .mockup-strip-img {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(26,23,20,0.10), 0 8px 24px rgba(26,23,20,0.06);
+  }
+  .mockup-strip-img img {
     width: 100%;
     height: auto;
     display: block;
@@ -754,8 +749,6 @@
     #individual { grid-template-columns: 1fr; gap: 1.5rem; }
     #hero { grid-template-columns: 1fr; text-align: left; }
     .hero-phone { width: 100%; max-width: 340px; margin: 0 auto; }
-    #congregation { grid-template-columns: 1fr; padding: 6rem 2.5rem; }
-    .congregation-mockup { right: 0; border-radius: 12px; max-width: 100%; }
   }
   @media (max-width: 560px) {
     nav { padding: 1rem 1.25rem; }
@@ -764,7 +757,7 @@
     #problem { padding: 4rem 1.25rem; }
     #knowledge { padding: 5rem 1.25rem; }
     #congregation { padding: 4rem 1.25rem; }
-    .congregation-mockup { border-radius: 8px; }
+    .mockup-strip { padding: 2rem 1.25rem 3rem; }
     #church-cta { padding: 4rem 1.25rem; }
     #individual { padding: 3rem 1.25rem; }
     #faq { padding: 4rem 1.25rem; }
@@ -853,39 +846,38 @@
 </div>
 
 <!-- ════════ WHAT YOUR CONGREGATION GETS ════════ -->
-<div class="congregation-band">
 <section id="congregation">
-  <div class="congregation-content">
-    <div class="congregation-header">
-      <p class="section-label">For your congregation</p>
-      <h2 class="section-headline">Give them a reason to linger.</h2>
-      <p class="section-sub">When your church partners with Linger, every person in the room gets access to your full teaching history — and the tools to explore it on their own terms.</p>
-    </div>
-
-    <div class="congregation-items">
-      <div class="congregation-item">
-        <h3>Searchable sermon archive</h3>
-        <p>Browse by date, series, topic, or scripture reference. Every sermon has AI-generated summaries, extracted references, and theme tags.</p>
-      </div>
-      <div class="congregation-item">
-        <h3>AI-powered exploration</h3>
-        <p>Ask questions about any sermon. Trace themes across months of teaching. Get additional references and context. Follow threads into the theological tradition.</p>
-      </div>
-      <div class="congregation-item">
-        <h3>New member onboarding</h3>
-        <p>New members can explore your church's teaching identity — what you believe, how you've addressed key topics, the arc of your sermon history.</p>
-      </div>
-      <div class="congregation-item">
-        <h3>A tool for the week, not just Sunday</h3>
-        <p>The sermon doesn't end when the service does. Your congregation can return to it, chew on it, dwell with it — and go deeper than they ever could on their own.</p>
-      </div>
-    </div>
+  <div class="congregation-header">
+    <p class="section-label">For your congregation</p>
+    <h2 class="section-headline">Give them a reason to linger.</h2>
+    <p class="section-sub">When your church partners with Linger, every person in the room gets access to your full teaching history — and the tools to explore it on their own terms.</p>
   </div>
 
-  <div class="congregation-mockup">
-    <img src="./linger-desktop-mockup.svg" alt="Linger church dashboard">
+  <div class="congregation-items">
+    <div class="congregation-item">
+      <h3>Searchable sermon archive</h3>
+      <p>Browse by date, series, topic, or scripture reference. Every sermon has AI-generated summaries, extracted references, and theme tags.</p>
+    </div>
+    <div class="congregation-item">
+      <h3>AI-powered exploration</h3>
+      <p>Ask questions about any sermon. Trace themes across months of teaching. Get additional references and context. Follow threads into the theological tradition.</p>
+    </div>
+    <div class="congregation-item">
+      <h3>New member onboarding</h3>
+      <p>New members can explore your church's teaching identity — what you believe, how you've addressed key topics, the arc of your sermon history.</p>
+    </div>
+    <div class="congregation-item">
+      <h3>A tool for the week, not just Sunday</h3>
+      <p>The sermon doesn't end when the service does. Your congregation can return to it, chew on it, dwell with it — and go deeper than they ever could on their own.</p>
+    </div>
   </div>
 </section>
+
+<!-- ════════ DESKTOP MOCKUP ════════ -->
+<div class="mockup-strip">
+  <div class="mockup-strip-img">
+    <img src="./linger-desktop-mockup.svg" alt="Linger AI chat — exploring sermon themes">
+  </div>
 </div>
 
 <!-- ════════ CHURCH CTA — terracotta band ════════ -->
