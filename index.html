@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" href="./Linger-icon.png">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Linger — AI-Powered Spiritual Development Platform">
+<meta property="og:title" content="Linger — Turn Your Church's Sermons Into a Living Knowledge Base">
 <meta property="og:description" content="Your church has years of teaching. None of it is searchable. Linger changes that.">
 <meta property="og:image" content="./og-image.png">
 <meta property="og:url" content="https://trylinger.com">
@@ -315,11 +315,16 @@
     flex-shrink: 0;
     opacity: 0;
     animation: phoneReveal 1s 0.5s forwards;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 24px 48px rgba(26,23,20,0.10), 0 8px 16px rgba(26,23,20,0.06);
   }
   .hero-phone img {
     width: 100%;
     height: auto;
     display: block;
+    margin: -1px;
+    width: calc(100% + 2px);
   }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
