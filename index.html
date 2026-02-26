@@ -515,9 +515,15 @@
   }
   #church-cta {
     padding: 6rem 2.5rem;
-    max-width: 680px;
+    max-width: 1100px;
     margin: 0 auto;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3.5rem;
+    align-items: center;
+  }
+  .church-cta-text {
+    text-align: left;
   }
   #church-cta .section-label {
     color: rgba(255,255,255,0.6);
@@ -536,8 +542,6 @@
     line-height: 1.7;
     margin-bottom: 2rem;
     max-width: 50ch;
-    margin-left: auto;
-    margin-right: auto;
   }
   .church-form {
     display: flex;
@@ -547,7 +551,20 @@
     overflow: hidden;
     background: rgba(255,255,255,0.95);
     max-width: 480px;
-    margin: 0 auto;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .church-cta-video {
+    width: 240px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  }
+  .church-cta-video video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
     transition: border-color 0.2s, box-shadow 0.2s;
   }
   .church-form:focus-within {
@@ -749,6 +766,8 @@
     #individual { grid-template-columns: 1fr; gap: 1.5rem; }
     #hero { grid-template-columns: 1fr; text-align: left; }
     .hero-phone { width: 100%; max-width: 340px; margin: 0 auto; }
+    #church-cta { grid-template-columns: 1fr; }
+    .church-cta-video { width: 200px; margin: 0 auto; }
   }
   @media (max-width: 560px) {
     nav { padding: 1rem 1.25rem; }
@@ -758,6 +777,8 @@
     #knowledge { padding: 5rem 1.25rem; }
     #congregation { padding: 4rem 1.25rem; }
     .mockup-strip { padding: 2rem 1.25rem 3rem; }
+    #church-cta { padding: 4rem 1.25rem; }
+    .church-cta-video { width: 100%; max-width: 280px; }
     #church-cta { padding: 4rem 1.25rem; }
     #individual { padding: 3rem 1.25rem; }
     #faq { padding: 4rem 1.25rem; }
@@ -883,14 +904,21 @@
 <!-- ════════ CHURCH CTA — terracotta band ════════ -->
 <div class="church-band">
 <section id="church-cta">
-  <p class="section-label">Get started</p>
-  <h2>Turn your sermon archive into your church's most valuable resource.</h2>
-  <p class="cta-sub">We're onboarding a small group of partner churches. Upload your archive, and your congregation can start exploring in days.</p>
-  <div class="church-form">
-    <input id="church-email" type="email" placeholder="Your email" autocomplete="email">
-    <button type="button" onclick="submitForm('church')">Let's talk</button>
+  <div class="church-cta-text">
+    <p class="section-label">Get started</p>
+    <h2>Turn your sermon archive into your church's most valuable resource.</h2>
+    <p class="cta-sub">We're onboarding a small group of partner churches. Upload your archive, and your congregation can start exploring in days.</p>
+    <div class="church-form">
+      <input id="church-email" type="email" placeholder="Your email" autocomplete="email">
+      <button type="button" onclick="submitForm('church')">Let's talk</button>
+    </div>
+    <p id="church-msg" style="font-size:0.8rem;margin-top:0.75rem;min-height:1.2em;color:rgba(255,255,255,0.7);"></p>
   </div>
-  <p id="church-msg" style="font-size:0.8rem;margin-top:0.75rem;min-height:1.2em;color:rgba(255,255,255,0.7);"></p>
+  <div class="church-cta-video">
+    <video controls playsinline preload="metadata">
+      <source src="https://pub-5873d1c8790a455b90dd60793d0c47c5.r2.dev/linger-promo.mp4" type="video/mp4">
+    </video>
+  </div>
 </section>
 </div>
 
