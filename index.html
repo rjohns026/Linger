@@ -249,13 +249,19 @@
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 3rem;
     padding: 8rem 2.5rem 6rem;
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .hero-eyebrow {
     font-size: 0.8rem;
@@ -269,7 +275,7 @@
   }
   .hero-headline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.75rem, 6vw, 4.75rem);
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
     font-weight: 500;
     line-height: 1.12;
     letter-spacing: -0.01em;
@@ -283,10 +289,10 @@
   }
   .hero-sub {
     margin-top: 1.75rem;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 300;
     color: var(--muted);
-    max-width: 54ch;
+    max-width: 48ch;
     line-height: 1.7;
     opacity: 0;
     animation: fadeUp 0.7s 0.4s forwards;
@@ -304,8 +310,24 @@
     color: var(--muted);
     opacity: 0.6;
   }
+  .hero-phone {
+    width: 280px;
+    flex-shrink: 0;
+    opacity: 0;
+    animation: phoneReveal 1s 0.5s forwards;
+  }
+  .hero-phone img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 24px 48px rgba(26,23,20,0.12)) drop-shadow(0 8px 16px rgba(26,23,20,0.08));
+  }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes phoneReveal {
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
@@ -703,10 +725,13 @@
   @media (max-width: 860px) {
     .knowledge-grid { grid-template-columns: 1fr; }
     #individual { grid-template-columns: 1fr; gap: 1.5rem; }
+    #hero { grid-template-columns: 1fr; text-align: left; }
+    .hero-phone { width: 220px; margin: 0 auto; }
   }
   @media (max-width: 560px) {
     nav { padding: 1rem 1.25rem; }
-    #hero { padding: 7rem 1.25rem 4rem; }
+    #hero { padding: 7rem 1.25rem 4rem; gap: 2rem; }
+    .hero-phone { width: 200px; }
     #problem { padding: 4rem 1.25rem; }
     #knowledge { padding: 5rem 1.25rem; }
     #congregation { padding: 4rem 1.25rem; }
@@ -732,15 +757,20 @@
 
 <!-- ════════ HERO ════════ -->
 <section id="hero">
-  <p class="hero-eyebrow">AI-Powered Spiritual Development Platform</p>
-  <h1 class="hero-headline">Your congregation wants to <em>linger on what they heard.</em></h1>
-  <p class="hero-sub">Your church has years of teaching — sermons, scripture exposition, pastoral wisdom. None of it is searchable. Linger turns your sermon archive into a living knowledge base your congregation can explore all week.</p>
-  <div class="hero-cta">
-    <a href="#church-cta" class="btn-hero">
-      Partner with us
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
-    </a>
-    <span class="hero-cta-note">Now onboarding partner churches</span>
+  <div class="hero-text">
+    <p class="hero-eyebrow">AI-Powered Spiritual Development Platform</p>
+    <h1 class="hero-headline">Your congregation wants to <em>linger on what they heard.</em></h1>
+    <p class="hero-sub">Your church has years of teaching — sermons, scripture exposition, pastoral wisdom. None of it is searchable. Linger turns your sermon archive into a living knowledge base your congregation can explore all week.</p>
+    <div class="hero-cta">
+      <a href="#church-cta" class="btn-hero">
+        Partner with us
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+      </a>
+      <span class="hero-cta-note">Now onboarding partner churches</span>
+    </div>
+  </div>
+  <div class="hero-phone">
+    <img src="./linger-phone-mockup.svg" alt="Linger app on iPhone">
   </div>
 </section>
 
