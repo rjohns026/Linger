@@ -453,17 +453,20 @@
   }
 
   /* ── WHAT YOUR CONGREGATION GETS ── */
+  .congregation-band {
+    overflow: hidden;
+  }
   #congregation {
-    padding: 6rem 2.5rem;
+    padding: 6rem 0 6rem 2.5rem;
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 3rem;
     align-items: center;
   }
   .congregation-content {
-    /* text column */
+    /* text column stays within normal page flow */
   }
   .congregation-header {
     margin-bottom: 2.5rem;
@@ -499,16 +502,16 @@
     line-height: 1.65;
   }
   .congregation-mockup {
-    border-radius: 12px;
+    position: relative;
+    right: -2.5rem;
+    border-radius: 12px 0 0 12px;
     overflow: hidden;
-    box-shadow: 0 24px 48px rgba(26,23,20,0.10), 0 8px 16px rgba(26,23,20,0.06);
+    box-shadow: -8px 16px 48px rgba(26,23,20,0.08);
   }
   .congregation-mockup img {
     width: 100%;
     height: auto;
     display: block;
-    margin: -1px;
-    width: calc(100% + 2px);
   }
 
   /* ── CHURCH CTA — terracotta band ── */
@@ -751,8 +754,8 @@
     #individual { grid-template-columns: 1fr; gap: 1.5rem; }
     #hero { grid-template-columns: 1fr; text-align: left; }
     .hero-phone { width: 100%; max-width: 340px; margin: 0 auto; }
-    #congregation { grid-template-columns: 1fr; }
-    .congregation-mockup { max-width: 500px; }
+    #congregation { grid-template-columns: 1fr; padding: 6rem 2.5rem; }
+    .congregation-mockup { right: 0; border-radius: 12px; max-width: 100%; }
   }
   @media (max-width: 560px) {
     nav { padding: 1rem 1.25rem; }
@@ -761,6 +764,7 @@
     #problem { padding: 4rem 1.25rem; }
     #knowledge { padding: 5rem 1.25rem; }
     #congregation { padding: 4rem 1.25rem; }
+    .congregation-mockup { border-radius: 8px; }
     #church-cta { padding: 4rem 1.25rem; }
     #individual { padding: 3rem 1.25rem; }
     #faq { padding: 4rem 1.25rem; }
@@ -849,6 +853,7 @@
 </div>
 
 <!-- ════════ WHAT YOUR CONGREGATION GETS ════════ -->
+<div class="congregation-band">
 <section id="congregation">
   <div class="congregation-content">
     <div class="congregation-header">
@@ -881,6 +886,7 @@
     <img src="./linger-desktop-mockup.svg" alt="Linger church dashboard">
   </div>
 </section>
+</div>
 
 <!-- ════════ CHURCH CTA — terracotta band ════════ -->
 <div class="church-band">
