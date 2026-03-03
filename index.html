@@ -336,27 +336,100 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── PROBLEM ── */
+  /* ── PROBLEM + HAGAH ── */
   #problem {
     padding: 6rem 2.5rem;
-    max-width: 720px;
+    max-width: 960px;
     margin: 0 auto;
   }
-  #problem .problem-lead {
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+  .problem-text .problem-lead {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.3rem, 2.5vw, 1.6rem);
     font-weight: 500;
     color: var(--ink);
     line-height: 1.45;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
-  #problem p {
+  .problem-text p {
     color: var(--muted);
     font-size: 1rem;
     line-height: 1.75;
-    margin-bottom: 1.25rem;
   }
-  #problem p:last-of-type { margin-bottom: 0; }
+  .hagah-card {
+    background: var(--terra);
+    border-radius: 8px;
+    padding: 2.75rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 8px 32px rgba(181,96,61,0.25),
+      0 2px 8px rgba(181,96,61,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.12);
+    transform: rotate(-1.5deg);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hagah-card:hover {
+    transform: rotate(0deg) translateY(-2px);
+    box-shadow:
+      0 12px 40px rgba(181,96,61,0.3),
+      0 4px 12px rgba(181,96,61,0.2),
+      inset 0 1px 0 rgba(255,255,255,0.12);
+  }
+  .hagah-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .hagah-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  }
+  .hagah-card .hagah-word {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.1;
+    position: relative;
+  }
+  .hagah-card .hagah-pronunciation {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    margin-top: 0.25rem;
+    position: relative;
+  }
+  .hagah-card .hagah-rule {
+    width: 32px;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+    margin: 1.25rem 0;
+    position: relative;
+  }
+  .hagah-card .hagah-meaning {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.55;
+    position: relative;
+  }
 
   /* ── SCRIPTURE INTERLUDE ── */
   .scripture-band {
@@ -365,7 +438,7 @@
     border-bottom: 1px solid var(--rule-light);
   }
   .scripture-interlude {
-    padding: 4.5rem 2.5rem;
+    padding: 5rem 2.5rem;
     text-align: center;
     max-width: 640px;
     margin: 0 auto;
@@ -373,8 +446,8 @@
   .scripture-interlude blockquote {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: clamp(1.15rem, 2.2vw, 1.35rem);
-    line-height: 1.65;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    line-height: 1.6;
     color: var(--ink);
     margin-bottom: 1.25rem;
   }
@@ -385,6 +458,75 @@
     color: var(--terra);
     font-weight: 400;
     letter-spacing: 0.03em;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-band {
+    background: var(--cream-warm);
+    border-top: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule-light);
+  }
+  #how-it-works {
+    padding: 6rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .how-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .how-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    position: relative;
+  }
+  .how-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(16.67% + 1rem);
+    right: calc(16.67% + 1rem);
+    height: 1px;
+    background: var(--rule);
+  }
+  .how-step {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .how-step-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--cream-warm);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .how-step-number svg {
+    width: 24px;
+    height: 24px;
+    color: var(--terra);
+    stroke-width: 1.5;
+  }
+  .how-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .how-step p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 28ch;
   }
 
   /* ── KNOWLEDGE LAYER — dark section ── */
@@ -406,6 +548,10 @@
   }
   .knowledge-header .section-headline {
     color: var(--cream);
+  }
+  .knowledge-header .section-headline em {
+    font-style: italic;
+    color: var(--terra-light);
   }
   .knowledge-header p {
     margin-top: 1.25rem;
@@ -628,9 +774,8 @@
 
   /* ── FAQ ── */
   .faq-band {
-    background: var(--cream-cool);
-    border-top: 1px solid var(--rule-light);
-    border-bottom: 1px solid var(--rule-light);
+    background: var(--ink);
+    color: var(--cream);
   }
   #faq {
     padding: 6rem 2.5rem;
@@ -638,15 +783,17 @@
     margin: 0 auto;
   }
   .faq-header { margin-bottom: 2.5rem; }
+  .faq-header .section-label { color: var(--terra-light); }
+  .faq-header .section-headline { color: var(--cream); }
   .faq-grid {
     display: flex;
     flex-direction: column;
   }
   .faq-item {
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid rgba(245,243,239,0.1);
   }
   .faq-item:first-child {
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid rgba(245,243,239,0.1);
   }
   .faq-question {
     width: 100%;
@@ -662,7 +809,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
     font-weight: 500;
-    color: var(--ink);
+    color: var(--cream);
     line-height: 1.35;
   }
   .faq-icon {
@@ -675,7 +822,7 @@
   .faq-icon::after {
     content: '';
     position: absolute;
-    background: var(--terra);
+    background: var(--terra-light);
     border-radius: 1px;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
@@ -706,21 +853,21 @@
   }
   .faq-answer-inner p {
     font-size: 0.9rem;
-    color: var(--muted);
+    color: rgba(245,243,239,0.6);
     line-height: 1.75;
     margin-bottom: 0.75rem;
   }
   .faq-answer-inner p:last-child { margin-bottom: 0; }
   .faq-answer-inner strong {
     font-weight: 500;
-    color: var(--ink);
+    color: var(--cream);
   }
   .faq-price-tag {
     display: inline-block;
     font-size: 0.8rem;
     font-weight: 400;
-    color: var(--terra);
-    border: 1px solid rgba(181,96,61,0.25);
+    color: var(--terra-light);
+    border: 1px solid rgba(200,122,90,0.3);
     border-radius: 3px;
     padding: 0.1rem 0.45rem;
     vertical-align: middle;
@@ -786,6 +933,17 @@
     height: 18px;
   }
 
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 860px) {
     .knowledge-grid { grid-template-columns: 1fr; }
@@ -794,12 +952,18 @@
     .hero-phone { width: 100%; max-width: 340px; margin: 0 auto; }
     #church-cta { grid-template-columns: 1fr; }
     .church-cta-video { width: 200px; margin: 0 auto; }
+    .how-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+    .how-steps::before { display: none; }
+    .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hagah-card { max-width: 340px; order: 2; }
+    .problem-text { order: 1; }
   }
   @media (max-width: 560px) {
     nav { padding: 1rem 1.25rem; }
     #hero { padding: 7rem 1.25rem 4rem; gap: 2rem; }
     .hero-phone { max-width: 100%; border-radius: 24px; }
     #problem { padding: 4rem 1.25rem; }
+    #how-it-works { padding: 4rem 1.25rem; }
     #knowledge { padding: 5rem 1.25rem; }
     #congregation { padding: 4rem 1.25rem; }
     .mockup-strip { padding: 2rem 1.25rem 3rem; }
@@ -828,9 +992,9 @@
 <!-- ════════ HERO ════════ -->
 <section id="hero">
   <div class="hero-text">
-    <p class="hero-eyebrow">AI-Powered Spiritual Development Platform</p>
+    <p class="hero-eyebrow">AI-Powered Sermon Knowledge Base</p>
     <h1 class="hero-headline">Your congregation wants to <em>linger on what they heard.</em></h1>
-    <p class="hero-sub">Your church has years of teaching — sermons, scripture exposition, pastoral wisdom. None of it is searchable. Linger turns your sermon archive into a living knowledge base your congregation can explore all week.</p>
+    <p class="hero-sub">Years of teaching — none of it searchable. Linger turns your sermon archive into a living knowledge base that can be explored all week.</p>
     <div class="hero-cta">
       <a href="#church-cta" class="btn-hero">
         Partner with us
@@ -844,86 +1008,100 @@
   </div>
 </section>
 
-<!-- ════════ PROBLEM ════════ -->
+<!-- ════════ PROBLEM + HAGAH ════════ -->
 <hr class="section-divider">
-<section id="problem">
-  <p class="problem-lead">Your pastor spends twenty hours preparing a sermon that's heard once and largely forgotten by Tuesday.</p>
-  <p>The teaching doesn't stick — not because people don't care, but because there's nowhere to go with it afterward. The scripture reference they wanted to look up is gone. The thought that felt so important in the moment — they can't quite reconstruct it. And your church's full teaching history — years of theological positions, pastoral insight, series arcs — sits locked inside hour-long recordings that nobody re-listens to.</p>
-  <p>The Hebrew word for meditate — <em>hagah</em> — means to chew, to mutter, to turn something over again and again. Scripture doesn't ask us to simply hear the word. It asks us to dwell with it. But dwelling requires access, and right now your congregation doesn't have it.</p>
+<section id="problem" class="reveal">
+  <div class="problem-grid">
+    <div class="hagah-card">
+      <p class="hagah-word">Hagah</p>
+      <p class="hagah-pronunciation">(hā-gä)</p>
+      <div class="hagah-rule"></div>
+      <p class="hagah-meaning">Hebrew — to mutter, to chew, to turn over again and again.</p>
+    </div>
+    <div class="problem-text">
+      <p class="problem-lead">A pastor spends twenty hours preparing a sermon. By midweek, most of the congregation has lost the thread.</p>
+      <p>Not because they don't care — but because there's nowhere to go with it afterward. The full teaching history of a church sits locked inside hour-long recordings that nobody re-listens to.</p>
+    </div>
+  </div>
 </section>
 
-<!-- ════════ SCRIPTURE ════════ -->
-<div class="scripture-band">
-  <div class="scripture-interlude">
-    <blockquote>"His delight is in the law of the Lord, and on his law he meditates day and night."</blockquote>
-    <cite>— Psalm 1:2</cite>
+<!-- ════════ HOW IT WORKS ════════ -->
+<div class="how-band">
+<section id="how-it-works" class="reveal">
+  <div class="how-header">
+    <p class="section-label">How it works</p>
+    <h2 class="section-headline">From archive to exploration in days.</h2>
   </div>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="how-step-number">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </div>
+      <h3>Upload your archive</h3>
+      <p>Send us your sermon recordings — months or years of content.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-step-number">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </div>
+      <h3>Linger structures everything</h3>
+      <p>Every sermon transcribed. Scripture indexed. Themes cross-referenced.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-step-number">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+      <h3>Your congregation explores</h3>
+      <p>Search, ask questions, trace themes — all week long.</p>
+    </div>
+  </div>
+</section>
 </div>
 
 <!-- ════════ KNOWLEDGE LAYER — dark section ════════ -->
 <div class="knowledge-band">
-  <section id="knowledge">
+  <section id="knowledge" class="reveal">
     <div class="knowledge-header">
       <p class="section-label">The knowledge layer</p>
-      <h2 class="section-headline">Every sermon your church has ever preached — searchable, connected, alive.</h2>
-      <p>Upload your existing sermon archive — months or years of recordings. Linger transcribes, structures, and indexes everything. Your congregation gets a living library they can dwell with all week.</p>
+      <h2 class="section-headline">Your congregation is already using ChatGPT. Your sermons are <em>invisible</em> to it.</h2>
+      <p>Linger makes your church's entire teaching history searchable, explorable, and alive — grounded in what your pastor actually said, not generic AI.</p>
     </div>
 
     <div class="knowledge-grid">
       <div class="knowledge-card">
-        <h3>Your teaching becomes searchable</h3>
-        <p>Every sermon transcribed, every scripture reference indexed, every theme cross-referenced. Your pastor can answer "what have we taught about generosity?" Your congregation can trace a theme across years.</p>
+        <h3>Searchable teaching history</h3>
+        <p>Every sermon transcribed, every scripture reference indexed. Trace a theme across years of your church's teaching.</p>
         <span class="card-example">"When did we talk about doubt?"</span>
       </div>
       <div class="knowledge-card">
-        <h3>Your congregation goes deeper</h3>
-        <p>People chat with Linger about what they heard — getting references, exploring connections to past sermons, following a thread wherever it leads. The AI knows your church's teaching. It's not generic.</p>
+        <h3>AI-powered exploration</h3>
+        <p>Your congregation chats with Linger to explore what they heard — getting references, following threads, going deeper.</p>
         <span class="card-example">"How has Pastor David addressed suffering?"</span>
       </div>
       <div class="knowledge-card">
         <h3>Centuries of theology, connected</h3>
-        <p>When your pastor references Augustine or Spurgeon, Linger takes the listener there. A curated theological knowledge base connects your church's teaching to the broader Christian tradition.</p>
+        <p>When your pastor references Augustine or Spurgeon, Linger takes the listener there — connecting your teaching to the broader Christian tradition.</p>
       </div>
       <div class="knowledge-card">
-        <h3>Self-directed exploration</h3>
-        <p>Linger surfaces connections and possibilities — your congregation chooses their own path. No drip campaigns. No daily assignments. Just a place to dwell with the word at their own pace. The sermon becomes a doorway, not a dead end.</p>
+        <h3>Self-directed, never pushed</h3>
+        <p>No drip campaigns. No daily assignments. Your congregation dwells with the word at their own pace. The sermon becomes a doorway, not a dead end.</p>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ════════ WHAT YOUR CONGREGATION GETS ════════ -->
-<section id="congregation">
-  <div class="congregation-header">
-    <p class="section-label">For your congregation</p>
-    <h2 class="section-headline">Give them a reason to linger.</h2>
-    <p class="section-sub">When your church partners with Linger, every person in the room gets access to your full teaching history — and the tools to explore it on their own terms.</p>
-  </div>
-
-  <div class="congregation-items">
-    <div class="congregation-item">
-      <h3>Searchable sermon archive</h3>
-      <p>Browse by date, series, topic, or scripture reference. Every sermon has AI-generated summaries, extracted references, and theme tags.</p>
-    </div>
-    <div class="congregation-item">
-      <h3>AI-powered exploration</h3>
-      <p>Ask questions about any sermon. Trace themes across months of teaching. Get additional references and context. Follow threads into the theological tradition.</p>
-    </div>
-    <div class="congregation-item">
-      <h3>New member onboarding</h3>
-      <p>New members can explore your church's teaching identity — what you believe, how you've addressed key topics, the arc of your sermon history.</p>
-    </div>
-    <div class="congregation-item">
-      <h3>A tool for the week, not just Sunday</h3>
-      <p>The sermon doesn't end when the service does. Your congregation can return to it, chew on it, dwell with it — and go deeper than they ever could on their own.</p>
-    </div>
-  </div>
-</section>
-
 <!-- ════════ DESKTOP MOCKUP ════════ -->
-<div class="mockup-strip">
+<div class="mockup-strip reveal">
   <div class="mockup-strip-img">
     <img src="./linger-desktop-mockup.svg" alt="Linger AI chat — exploring sermon themes">
+  </div>
+</div>
+
+<!-- ════════ SCRIPTURE INTERLUDE ════════ -->
+<div class="scripture-band">
+  <div class="scripture-interlude reveal">
+    <blockquote>"His delight is in the law of the Lord, and on his law he meditates day and night."</blockquote>
+    <cite>— Psalm 1:2</cite>
   </div>
 </div>
 
@@ -968,7 +1146,6 @@
       <p id="individual-msg" style="font-size:0.8rem;margin-top:0.6rem;min-height:1.2em;color:var(--terra);"></p>
     </div>
   </section>
-  <hr class="section-divider">
 </div>
 
 <!-- ════════ FAQ ════════ -->
@@ -987,8 +1164,8 @@
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">
-        <p>Church partnerships start at <span class="faq-price-tag">~$69/month</span> and scale with congregation size. Your entire congregation gets full access — search, AI exploration, the theological knowledge base, everything. No per-seat charges, no individual subscriptions required.</p>
-        <p>We're still finalizing exact pricing and will work with early partners directly. Reach out and we'll figure out the right fit.</p>
+        <p>We're still working out the details, but the model will be simple and usage-based — scaling with how much your church uses Linger, not a flat rate that doesn't fit. Your entire congregation gets full access as part of the partnership. No per-seat charges.</p>
+        <p>We're finalizing pricing with our early partners right now. If you're interested, reach out and we'll figure out the right fit together.</p>
       </div></div>
     </div>
 
@@ -1089,6 +1266,18 @@
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   }
+
+  // Scroll reveal
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealElements.forEach(el => revealObserver.observe(el));
 
   const WORKER_URL = 'https://linger-contacts.robert-fdf.workers.dev/';
 
