@@ -156,6 +156,7 @@
     font-size: clamp(1.75rem, 3.5vw, 2.75rem);
     font-weight: 500;
     line-height: 1.2;
+    text-wrap: balance;
   }
 
   /* ── EMAIL FORM ── */
@@ -281,6 +282,7 @@
     line-height: 1.12;
     letter-spacing: -0.01em;
     max-width: 20ch;
+    text-wrap: balance;
     opacity: 0;
     animation: fadeUp 0.7s 0.25s forwards;
   }
@@ -372,14 +374,6 @@
       0 2px 8px rgba(181,96,61,0.15),
       inset 0 1px 0 rgba(255,255,255,0.12);
     transform: rotate(-1.5deg);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-  .hagah-card:hover {
-    transform: rotate(0deg) translateY(-2px);
-    box-shadow:
-      0 12px 40px rgba(181,96,61,0.3),
-      0 4px 12px rgba(181,96,61,0.2),
-      inset 0 1px 0 rgba(255,255,255,0.12);
   }
   .hagah-card::before {
     content: '';
@@ -711,8 +705,6 @@
     height: auto;
     display: block;
   }
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
   .church-form:focus-within {
     border-color: rgba(255,255,255,0.5);
     box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
@@ -969,7 +961,6 @@
     .mockup-strip { padding: 2rem 1.25rem 3rem; }
     #church-cta { padding: 4rem 1.25rem; }
     .church-cta-video { width: 100%; max-width: 280px; }
-    #church-cta { padding: 4rem 1.25rem; }
     #individual { padding: 3rem 1.25rem; }
     #faq { padding: 4rem 1.25rem; }
     .scripture-interlude { padding: 3rem 1.5rem; }
@@ -1000,7 +991,6 @@
         Partner with us
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
       </a>
-      <span class="hero-cta-note">Now onboarding partner churches</span>
     </div>
   </div>
   <div class="hero-phone">
@@ -1373,6 +1363,16 @@
       msg.style.color = 'var(--muted)';
     }
   }
+
+  // Submit on Enter key
+  document.getElementById('church-email').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); submitForm('church'); }
+  });
+  ['individual-email', 'individual-church', 'individual-city'].forEach((id) => {
+    document.getElementById(id).addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); submitIndividual(); }
+    });
+  });
 </script>
 
 <!-- Start of HubSpot Embed Code -->
